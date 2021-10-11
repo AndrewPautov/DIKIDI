@@ -15,7 +15,7 @@ struct ContentView: View {
                 Image(systemName: "house")
                 Text("Главная")
             }
-            Text("Акции").tabItem {
+            Purcheses().tabItem {
                 Image(systemName: "bag")
                 Text("Акции")
             }
