@@ -56,7 +56,7 @@ class ImageCall {
         
             let task = URLSession.shared.dikidiTask(with: request) { dikidi, response, error in
                 if let dikidi = dikidi {
-                    //completionHeadler((dikidi.data?.blocks?.catalog?[0].image! ?? "")!)
+                //completionHeadler((dikidi.data?.blocks?.catalog?[0].image! ?? "")!)
                     }
                 }
                 task.resume()
