@@ -8,12 +8,26 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var imageCall: ImageCall
+    @State var image: UIImage = UIImage()
+    
+    init() {
+        imageCall = ImageCall()
+        imageCall.imageManager()
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 0).fill(Color.blue).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 3.3).frame(width: 420, height: 270)
-//                    ImageCall.imageManager(completionHeadler: )
+                    Image(uiImage: image)
+                        .resizable()
+                       .aspectRatio(contentMode: .fit)
+                       .frame(width:100, height:100)
+                       .onReceive(imageCall.didChange) { data in
+                           self.image = UIImage(data: data) ?? UIImage()
+                       }
                     Text("Онлайн-записи и бронирование услуг").offset(x: 0, y: 20)
                 }.edgesIgnoringSafeArea(.top)
                 

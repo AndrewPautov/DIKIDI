@@ -8,15 +8,16 @@
 import Foundation
 
 class Vip: Codable {
-    let id: String?
-    let categories: [JSONAny]?
-    let image: ImageModels?
-    let name: String?
-
-    init(id: String?, categories: [JSONAny]?, image: ImageModels?, name: String?) {
+    internal init(id: String, categories: [JSONAny], image: ImageModel, name: String) {
         self.id = id
         self.categories = categories
         self.image = image
         self.name = name
     }
+    
+    let id: String
+    let categories: [JSONAny]
+    let image: ImageModel
+    let name: String
 }
+

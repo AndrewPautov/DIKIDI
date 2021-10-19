@@ -7,14 +7,12 @@
 
 import Foundation
 
-
-
 class Dikidi: Codable {
-    let error: Error?
-    let data: DataClass?
-
-    init(error: Error?, data: DataClass?) {
+    internal init(error: Error, data: DataClass) {
         self.error = error
         self.data = data
     }
+    
+    let error: Error
+    let data: DataClass
 }

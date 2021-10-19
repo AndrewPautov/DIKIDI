@@ -8,11 +8,11 @@
 import Foundation
 
 class Error: Codable {
-    let message: JSONNull?
-    let code: Int?
-
-    init(message: JSONNull?, code: Int?) {
+    internal init(message: JSONNull?, code: Int) {
         self.message = message
         self.code = code
     }
+    
+    let message: JSONNull?
+    let code: Int
 }

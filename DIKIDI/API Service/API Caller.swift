@@ -6,9 +6,10 @@
 //
 import Foundation
 import SwiftUI
+import Combine
 
 struct APICall {
-    func getAndrewData() {
+    static func getAndrewData() {
         let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
         let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
         guard let url = url else {
@@ -24,7 +25,7 @@ struct APICall {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             
-            print(response)
+//            print(response)
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: [])
@@ -32,33 +33,86 @@ struct APICall {
                 let string = (String(data: jsonData, encoding: String.Encoding.utf8))
                 guard let string = string else {return}
                 let newString = string.filter{$0 != "\\"}
-                print(newString)
+//                print(newString)
                 
             } catch {
                 print(error)
             }
         })
         task.resume()
-        getAndrewData()
-    
-
     }
 }
 
-class ImageCall {
-    func imageManager(completionHeadler: @escaping (Image) -> ()) {
+class ImageCall: ObservableObject {
+    
+    var didChange = PassthroughSubject<Data, Never>()
+    var data = Data() {
+        didSet {
+            didChange.send(data)
+        }
+    }
+    
+    func imageManager(_ completionHeadler: ((ImageModel) -> ())? = nil) {
+        
+        APICall.getAndrewData()
+        
         let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
         let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
+        guard let url = url else {
+            return
+        }
         
-        var request = URLRequest(url: url!)
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(APIkey, forHTTPHeaderField: "Authorization")
         
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+    
             let task = URLSession.shared.dikidiTask(with: request) { dikidi, response, error in
                 if let dikidi = dikidi {
-                //completionHeadler((dikidi.data?.blocks?.catalog?[0].image! ?? "")!)
+                    DispatchQueue.main.async {
+                        if let url = URL(string: dikidi.data.image) {
+                            self.data = try! Data(contentsOf: url)
+                        }
                     }
+//                completionHeadler((dikidi.data?.blocks?.catalog?[0].image! ?? "")!)
+                } else {
+
                 }
-                task.resume()
+            }
+        task.resume()
+    }
+}
+
+func newJSONDecoder() -> JSONDecoder {
+    let decoder = JSONDecoder()
+    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+        decoder.dateDecodingStrategy = .iso8601
+    }
+    return decoder
+}
+
+func newJSONEncoder() -> JSONEncoder {
+    let encoder = JSONEncoder()
+    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
+        encoder.dateEncodingStrategy = .iso8601
+    }
+    return encoder
+}
+
+extension URLSession {
+    fileprivate func codableTask<T: Codable>(with url: URLRequest, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return self.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completionHandler(nil, response, nil)
+                return
+            }
+            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
         }
+    }
+
+    func dikidiTask(with url: URLRequest, completionHandler: @escaping (Dikidi?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return self.codableTask(with: url, completionHandler: completionHandler)
+    }
 }

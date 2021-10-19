@@ -8,11 +8,11 @@
 import Foundation
 
 class Currency: Codable {
-    let id, title, abbr: String?
-
-    init(id: String?, title: String?, abbr: String?) {
+    internal init(id: String, title: String, abbr: String) {
         self.id = id
         self.title = title
         self.abbr = abbr
     }
+    
+    let id, title, abbr: String
 }
