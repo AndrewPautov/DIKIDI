@@ -1,5 +1,5 @@
 //
-//  Manager.swift
+//  Decoder.swift
 //  DIKIDI
 //
 //  Created by Андрей Паутов on 12.10.2021.

@@ -17,7 +17,7 @@
 		6E8795872715A00F007B4000 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8795862715A00F007B4000 /* Schedule.swift */; };
 		6E8795892715A030007B4000 /* Vip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8795882715A030007B4000 /* Vip.swift */; };
 		6E87958B2715A04F007B4000 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87958A2715A04F007B4000 /* Errors.swift */; };
-		6E87958D2715A06E007B4000 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87958C2715A06E007B4000 /* Manager.swift */; };
+		6E87958D2715A06E007B4000 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87958C2715A06E007B4000 /* Decoder.swift */; };
 		6ED3440227107DF600C9BF74 /* DIKIDIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3440127107DF600C9BF74 /* DIKIDIApp.swift */; };
 		6ED3440427107DF600C9BF74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3440327107DF600C9BF74 /* ContentView.swift */; };
 		6ED3440627107DFB00C9BF74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED3440527107DFB00C9BF74 /* Assets.xcassets */; };
@@ -36,7 +36,7 @@
 		6E8795862715A00F007B4000 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		6E8795882715A030007B4000 /* Vip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vip.swift; sourceTree = "<group>"; };
 		6E87958A2715A04F007B4000 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		6E87958C2715A06E007B4000 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		6E87958C2715A06E007B4000 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		6ED343FE27107DF600C9BF74 /* DIKIDI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DIKIDI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED3440127107DF600C9BF74 /* DIKIDIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIKIDIApp.swift; sourceTree = "<group>"; };
 		6ED3440327107DF600C9BF74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		6E87958E2715A24A007B4000 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				6E87958C2715A06E007B4000 /* Manager.swift */,
+				6E87958C2715A06E007B4000 /* Decoder.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 				6E8795892715A030007B4000 /* Vip.swift in Sources */,
 				6E8795872715A00F007B4000 /* Schedule.swift in Sources */,
 				6E87957B27159F11007B4000 /* CatagolModels.swift in Sources */,
-				6E87958D2715A06E007B4000 /* Manager.swift in Sources */,
+				6E87958D2715A06E007B4000 /* Decoder.swift in Sources */,
 				6E2EEA592711D49500E73533 /* API Caller.swift in Sources */,
 				6E87958527159FF9007B4000 /* ImageModel.swift in Sources */,
 				6EFB6AC72711E95E00CDC0A2 /* HomeView.swift in Sources */,
