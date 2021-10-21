@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+
     @ObservedObject var imageCall: ImageCall
     @State var image: UIImage = UIImage()
     @State var exapmles: UIImage = UIImage()
-    
+
     init() {
         imageCall = ImageCall()
         imageCall.imageManager()
     }
-    
+
 //    @ObservedObject var exampleCall: ExapmleCall
 //    @State var exapmles: UIImage = UIImage()
-    
-//    init() {
+
+//    init() { 
 //        exampleCall = ExapmleCall()
 //        exampleCall.examplesManager()
 //    }
-    
+
     var body: some View {
         ScrollView {
             VStack {
@@ -33,37 +33,37 @@ struct HomeView: View {
                     Image(uiImage: image)
                        .resizable()
                        .aspectRatio(contentMode: .fit)
-                       .frame(width:700, height:340)
+                       .frame(width: 700, height: 340)
                        .offset(y: -50)
                        .onReceive(imageCall.didChange) { data in
-                           self.image = UIImage(data: data) ?? UIImage()
+                           image = UIImage(data: data) ?? UIImage()
                        }
                     Text("Онлайн-записи и бронирование услуг")
                         .offset(x: 0, y: 20)
                 }.edgesIgnoringSafeArea(.top)
-                
+
                 Text("Коллекция работ")
                     .font(.system(size: 23))
                     .offset(x: -100, y: -50)
                 RoundedRectangle(cornerRadius: 15).fill(Color.blue).frame(width: 380, height: 210)
                 Image(uiImage: exapmles).onReceive(imageCall.didChange) { data in
-                    self.exapmles = UIImage(data: data) ?? UIImage()
+                    exapmles = UIImage(data: data) ?? UIImage()
                 }
                 HStack {
                     Text("Посмотрите фото работ и выберите куда можно записаться").offset(x: 12).font(.system(size: 13))
-                    
+
                     ZStack {
                         RoundedRectangle(cornerRadius: 5).fill(Color.gray).frame(width: 100, height: 30)
                         Text("Продолжить").font(.system(size: 13))
-                        
+
                     }.padding()
-                    
+
                 }
             }
             Divider()
-            
+
             Text("Каталог").font(.system(size: 23)).offset(x: -147)
-            ZStack{
+            ZStack {
                 RoundedRectangle(cornerRadius: 11).fill(Color.gray).frame(width: 380, height: 120)
                 HStack {
                     RoundedRectangle(cornerRadius: 11).fill(Color.blue).frame(width: 120, height: 120).offset(x: 18)
@@ -77,21 +77,21 @@ struct HomeView: View {
                         Text("Schedule")
                             .offset(x: -198, y: -2)
                             .font(.system(size: 13))
-                        HStack (spacing: 2){
+                        HStack(spacing: 2) {
                             Text("0.0").font(.system(size: 13))
-                            ForEach(0 ..< 5) { item in
+                            ForEach(0 ..< 5) { _ in
                                 Image(systemName: "star").font(.system(size: 10))
                             }
                         }.offset(x: -180)
                     }
-                    
+
                 }
-                
+
             ZStack {
                             RoundedRectangle(cornerRadius: 11).fill(Color.gray).frame(width: 380, height: 120)
                             HStack {
                                 RoundedRectangle(cornerRadius: 11).fill(Color.blue).frame(width: 120, height: 120).offset(x: 18)
-                                
+
                                 Spacer()
                                 VStack {
                                     Text("profi_nails")
@@ -102,9 +102,9 @@ struct HomeView: View {
                                     Text("Schedule")
                                         .offset(x: -198, y: -2)
                                         .font(.system(size: 13))
-                                    HStack (spacing: 2){
+                                    HStack(spacing: 2) {
                                         Text("0.0").font(.system(size: 13))
-                                        ForEach(0 ..< 5) { item in
+                                        ForEach(0 ..< 5) { _ in
                                             Image(systemName: "star").font(.system(size: 10))
                                         }
                                     }.offset(x: -180)
@@ -114,5 +114,5 @@ struct HomeView: View {
             }.ignoresSafeArea()
     }
 }
-    
+
 }

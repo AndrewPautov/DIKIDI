@@ -23,7 +23,7 @@ class Catalog: Codable {
         self.house = house
         self.masterID = masterID
     }
-    
+
     let id: String
     let schedule: ScheduleUnion
     let categories: [JSONAny]

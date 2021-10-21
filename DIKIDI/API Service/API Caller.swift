@@ -9,29 +9,28 @@ import SwiftUI
 import Combine
 
 struct APICall {
-    static func getAndrewData() {
+    static func getData() {
         let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
         let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
         guard let url = url else {
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(APIkey, forHTTPHeaderField: "Authorization")
-        
+
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
-            
-            
+        let task = session.dataTask(with: request, completionHandler: {data, _, error -> Void in
+
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: [])
                 let jsonData = try JSONSerialization.data(withJSONObject: json, options: [JSONSerialization.WritingOptions.withoutEscapingSlashes])
                 let string = (String(data: jsonData, encoding: String.Encoding.utf8))
                 guard let string = string else {return}
-                let newString = string.filter{$0 != "\\"}
-                
+                let newString = string.filter {$0 != "\\"}
+
             } catch {
                 print(error)
             }
@@ -72,34 +71,32 @@ extension URLSession {
     }
 }
 
-
 class ImageCall: ObservableObject {
-    
+
     var didChange = PassthroughSubject<Data, Never>()
     var data = Data() {
         didSet {
             didChange.send(data)
         }
     }
-    
-    func imageManager(_ completionHeadler: ((ImageModel) -> ())? = nil) {
-        
-        APICall.getAndrewData()
-        
+
+    func imageManager(_ completionHeadler: ((ImageModel) -> Void)? = nil) {
+
+        APICall.getData()
+
         let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
         let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
         guard let url = url else {
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(APIkey, forHTTPHeaderField: "Authorization")
-        
+
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-    
-            let task = URLSession.shared.dikidiTask(with: request) { dikidi, response, error in
+
+            let task = URLSession.shared.dikidiTask(with: request) { dikidi, _, _ in
                 if let dikidi = dikidi {
                     DispatchQueue.main.async {
                         if let url = URL(string: dikidi.data.image) {
@@ -113,24 +110,23 @@ class ImageCall: ObservableObject {
         task.resume()
     }
 
-    func examplesManager(_ completionHeandler: ((ImageModel) -> ())? = nil) {
-        
-        APICall.getAndrewData()
-        
+    func examplesManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
+
+        APICall.getData()
+
         let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
         let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
         guard let url = url else {
             return
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(APIkey, forHTTPHeaderField: "Authorization")
-        
+
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-    
-            let task = URLSession.shared.dikidiTask(with: request) { dikidi, response, error in
+
+            let task = URLSession.shared.dikidiTask(with: request) { dikidi, _, _ in
                 if let dikidi = dikidi {
                     DispatchQueue.main.async {
                         if let url = URL(string: dikidi.data.blocks.examples) {
@@ -141,7 +137,7 @@ class ImageCall: ObservableObject {
 
                 }
             }
-        
+
         task.resume()
     }
 }

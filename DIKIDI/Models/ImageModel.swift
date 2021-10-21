@@ -12,6 +12,6 @@ class ImageModel: Codable {
         self.thumb = thumb
         self.origin = origin
     }
-    
+
     let thumb, origin: String
 }

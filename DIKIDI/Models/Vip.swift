@@ -14,10 +14,8 @@ class Vip: Codable {
         self.image = image
         self.name = name
     }
-    
     let id: String
     let categories: [JSONAny]
     let image: ImageModel
     let name: String
 }
-

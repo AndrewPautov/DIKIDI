@@ -18,7 +18,6 @@ class Blocks: Codable {
         self.vip = vip
         self.catalog = catalog
     }
-    
     let new, popular, banners, categories: [JSONAny]
     let favorites: [JSONAny]
     let examples: String

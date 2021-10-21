@@ -12,7 +12,7 @@ class Error: Codable {
         self.message = message
         self.code = code
     }
-    
+
     let message: JSONNull?
     let code: Int
 }

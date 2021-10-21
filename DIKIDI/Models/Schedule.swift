@@ -41,7 +41,7 @@ class ScheduleElement: Codable {
         self.workFrom = workFrom
         self.workTo = workTo
     }
-    
+
     let day, workFrom, workTo: String
 
     enum CodingKeys: String, CodingKey {

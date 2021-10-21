@@ -13,6 +13,5 @@ class Currency: Codable {
         self.title = title
         self.abbr = abbr
     }
-    
     let id, title, abbr: String
 }

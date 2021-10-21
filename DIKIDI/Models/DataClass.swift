@@ -14,7 +14,7 @@ class DataClass: Codable {
         self.image = image
         self.catalogCount = catalogCount
     }
-    
+
     let blocks: Blocks
     let title: String
     let image: String

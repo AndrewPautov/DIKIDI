@@ -23,9 +23,12 @@
 		6ED3440627107DFB00C9BF74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED3440527107DFB00C9BF74 /* Assets.xcassets */; };
 		6ED3440927107DFB00C9BF74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED3440827107DFB00C9BF74 /* Preview Assets.xcassets */; };
 		6EFB6AC72711E95E00CDC0A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB6AC62711E95E00CDC0A2 /* HomeView.swift */; };
+		965366E2F8DF9D2F736A3E17 /* Pods_DIKIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775192E2A92800DE02885534 /* Pods_DIKIDI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33B7ED6287837AC897CF3B08 /* Pods-DIKIDI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIKIDI.debug.xcconfig"; path = "Target Support Files/Pods-DIKIDI/Pods-DIKIDI.debug.xcconfig"; sourceTree = "<group>"; };
+		39630BB4BE7D5A24AC972182 /* Pods-DIKIDI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIKIDI.release.xcconfig"; path = "Target Support Files/Pods-DIKIDI/Pods-DIKIDI.release.xcconfig"; sourceTree = "<group>"; };
 		6E2EEA582711D49500E73533 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
 		6E87957A27159F10007B4000 /* CatagolModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatagolModels.swift; sourceTree = "<group>"; };
 		6E87957C27159F6D007B4000 /* Dikidi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dikidi.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		6ED3440527107DFB00C9BF74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ED3440827107DFB00C9BF74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6EFB6AC62711E95E00CDC0A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		775192E2A92800DE02885534 /* Pods_DIKIDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DIKIDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965366E2F8DF9D2F736A3E17 /* Pods_DIKIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +98,8 @@
 			children = (
 				6ED3440027107DF600C9BF74 /* DIKIDI */,
 				6ED343FF27107DF600C9BF74 /* Products */,
+				E1D1CBF8C36DB05856354C72 /* Pods */,
+				8DE0F1672F43CB2F9A8A4543 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +158,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8DE0F1672F43CB2F9A8A4543 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				775192E2A92800DE02885534 /* Pods_DIKIDI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1D1CBF8C36DB05856354C72 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				33B7ED6287837AC897CF3B08 /* Pods-DIKIDI.debug.xcconfig */,
+				39630BB4BE7D5A24AC972182 /* Pods-DIKIDI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +182,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6ED3440C27107DFB00C9BF74 /* Build configuration list for PBXNativeTarget "DIKIDI" */;
 			buildPhases = (
+				6E2F9721272175C3008D216F /* ShellScript */,
+				F78C3F6972E6F82BAB597C4E /* [CP] Check Pods Manifest.lock */,
 				6ED343FA27107DF500C9BF74 /* Sources */,
 				6ED343FB27107DF500C9BF74 /* Frameworks */,
 				6ED343FC27107DF500C9BF74 /* Resources */,
@@ -215,6 +241,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E2F9721272175C3008D216F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		F78C3F6972E6F82BAB597C4E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DIKIDI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6ED343FA27107DF500C9BF74 /* Sources */ = {
@@ -359,6 +427,7 @@
 		};
 		6ED3440D27107DFB00C9BF74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33B7ED6287837AC897CF3B08 /* Pods-DIKIDI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -389,6 +458,7 @@
 		};
 		6ED3440E27107DFB00C9BF74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39630BB4BE7D5A24AC972182 /* Pods-DIKIDI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

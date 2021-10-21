@@ -12,7 +12,6 @@ class Dikidi: Codable {
         self.error = error
         self.data = data
     }
-    
     let error: Error
     let data: DataClass
 }
