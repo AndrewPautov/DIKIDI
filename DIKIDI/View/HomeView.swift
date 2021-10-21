@@ -15,16 +15,8 @@ struct HomeView: View {
 
     init() {
         imageCall = ImageCall()
-        imageCall.imageManager()
+        imageCall.getImages()
     }
-
-//    @ObservedObject var exampleCall: ExapmleCall
-//    @State var exapmles: UIImage = UIImage()
-
-//    init() { 
-//        exampleCall = ExapmleCall()
-//        exampleCall.examplesManager()
-//    }
 
     var body: some View {
         ScrollView {
@@ -46,7 +38,8 @@ struct HomeView: View {
                     .font(.system(size: 23))
                     .offset(x: -100, y: -50)
                 RoundedRectangle(cornerRadius: 15).fill(Color.blue).frame(width: 380, height: 210)
-                Image(uiImage: exapmles).onReceive(imageCall.didChange) { data in
+                Image(uiImage: exapmles)
+                    .onReceive(imageCall.didChangeExampleImage) { data in
                     exapmles = UIImage(data: data) ?? UIImage()
                 }
                 HStack {

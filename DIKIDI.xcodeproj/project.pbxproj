@@ -182,8 +182,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6ED3440C27107DFB00C9BF74 /* Build configuration list for PBXNativeTarget "DIKIDI" */;
 			buildPhases = (
-				6E2F9721272175C3008D216F /* ShellScript */,
 				F78C3F6972E6F82BAB597C4E /* [CP] Check Pods Manifest.lock */,
+				6E2F9721272175C3008D216F /* ShellScript */,
 				6ED343FA27107DF500C9BF74 /* Sources */,
 				6ED343FB27107DF500C9BF74 /* Frameworks */,
 				6ED343FC27107DF500C9BF74 /* Resources */,

@@ -72,72 +72,65 @@ extension URLSession {
 }
 
 class ImageCall: ObservableObject {
-
+    
     var didChange = PassthroughSubject<Data, Never>()
-    var data = Data() {
+    var didChangeExampleImage = PassthroughSubject<Data, Never>()
+
+    var headerImage = Data() {
         didSet {
-            didChange.send(data)
+            didChange.send(headerImage)
+        }
+    }
+    
+    var exampleImage = Data() {
+        didSet {
+            didChangeExampleImage.send(exampleImage)
         }
     }
 
-    func imageManager(_ completionHeadler: ((ImageModel) -> Void)? = nil) {
+    func getImages() {
+        imageManager()
+        examplesManager()
+    }
 
-        APICall.getData()
-
+   private func getRequest() -> URLRequest? {
         let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
         let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
-        guard let url = url else {
-            return
-        }
-
+        
+        guard let url = url else { return nil}
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(APIkey, forHTTPHeaderField: "Authorization")
-
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-            let task = URLSession.shared.dikidiTask(with: request) { dikidi, _, _ in
-                if let dikidi = dikidi {
-                    DispatchQueue.main.async {
-                        if let url = URL(string: dikidi.data.image) {
-                            self.data = try! Data(contentsOf: url)
-                        }
+       
+       return request
+    }
+    
+    func imageManager(_ completionHeadler: ((ImageModel) -> Void)? = nil) {
+        guard let request = getRequest() else { return }
+        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
+            guard let self = self else {return}
+            if let dikidi = dikidi {
+                DispatchQueue.main.async {
+                    if let url = URL(string: dikidi.data.image) {
+                        self.headerImage = try! Data(contentsOf: url)
                     }
-                } else {
-
                 }
             }
-        task.resume()
+        }.resume()
     }
 
     func examplesManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
-
-        APICall.getData()
-
-        let url = URL(string: "https://api-beauty.test.dikidi.ru/home/info?")
-        let APIkey = "maJ9RyT4TJLt7bmvYXU7M3h4F797fUKofUf3373foN94q4peAM"
-        guard let url = url else {
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue(APIkey, forHTTPHeaderField: "Authorization")
-
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-            let task = URLSession.shared.dikidiTask(with: request) { dikidi, _, _ in
-                if let dikidi = dikidi {
-                    DispatchQueue.main.async {
-                        if let url = URL(string: dikidi.data.blocks.examples) {
-                            self.data = try! Data(contentsOf: url)
-                        }
+        guard let request = getRequest() else { return }
+        URLSession.shared.dikidiTask(with: request) {[weak self]  dikidi, _, _ in
+            guard let self = self else {return}
+            if let dikidi = dikidi {
+                DispatchQueue.main.async {
+                    if let url = URL(string: dikidi.data.blocks.examples) {
+                        self.exampleImage = try! Data(contentsOf: url)
                     }
-                } else {
-
                 }
             }
-
-        task.resume()
+        }.resume()
     }
 }

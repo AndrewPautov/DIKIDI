@@ -15,18 +15,17 @@
 			dependencies = (
 			);
 			name = SwiftLint;
-			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0FC83F48DCD34F71E93343157C475A7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		BD00CE2DD2A77D0240902D7778C1BC0C /* Pods-DIKIDI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8114FE5695216146B89EACEAC939BDAB /* Pods-DIKIDI-dummy.m */; };
-		E58377E055CB6C913EB69AD5FFCB1294 /* Pods-DIKIDI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24EAA4A6EE55741A71DC89701440856D /* Pods-DIKIDI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		321E796887825152A9EE56576B7A88D4 /* Pods-DIKIDI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8114FE5695216146B89EACEAC939BDAB /* Pods-DIKIDI-dummy.m */; };
+		99339D428BB7E19AE29F2177507EDE00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F1A69AA0BE3B3BF282727542F2EFC934 /* Pods-DIKIDI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24EAA4A6EE55741A71DC89701440856D /* Pods-DIKIDI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		92260C35630646231B828F843AC614CC /* PBXContainerItemProxy */ = {
+		E2B9B7D71EDD27AE746487E0CBB68A5F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -43,34 +42,26 @@
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
 		8114FE5695216146B89EACEAC939BDAB /* Pods-DIKIDI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DIKIDI-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E2DF5A4541AB1A442CB97D9466FB66C /* Pods-DIKIDI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DIKIDI.debug.xcconfig"; sourceTree = "<group>"; };
 		D900303D5BCFC092579F8F94C63E1EC7 /* Pods-DIKIDI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DIKIDI.release.xcconfig"; sourceTree = "<group>"; };
-		EEEC52B52BD9B28A28419CBD64F012EA /* Pods_DIKIDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DIKIDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEEC52B52BD9B28A28419CBD64F012EA /* Pods-DIKIDI */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-DIKIDI"; path = Pods_DIKIDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F04858AF3F49DA897CDBDB54DC792272 /* Pods-DIKIDI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DIKIDI-Info.plist"; sourceTree = "<group>"; };
 		FD455C466682CE1B0718FB1305144827 /* Pods-DIKIDI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DIKIDI.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		63B9F88B4BBC37A3BBF64135F1108D0B /* Frameworks */ = {
+		4AF245F61F7C5D148C4C06C43275C02B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FC83F48DCD34F71E93343157C475A7E /* Foundation.framework in Frameworks */,
+				99339D428BB7E19AE29F2177507EDE00 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37B7833C7B1C6A2F1E4C569F445AE8DD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EEEC52B52BD9B28A28419CBD64F012EA /* Pods_DIKIDI.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,13 +88,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A64BCE24D0A82280FEE00D27B469100C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEEC52B52BD9B28A28419CBD64F012EA /* Pods-DIKIDI */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				37B7833C7B1C6A2F1E4C569F445AE8DD /* Products */,
+				A64BCE24D0A82280FEE00D27B469100C /* Products */,
 				D9FD6ED611AA42B998DE109FA5CEF3BE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +120,7 @@
 			children = (
 				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
 			);
+			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -151,11 +151,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4D5D699430A788668E96981C93B8AC6C /* Headers */ = {
+		21B865EC79BE1A311A1A9AC1DB60E450 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58377E055CB6C913EB69AD5FFCB1294 /* Pods-DIKIDI-umbrella.h in Headers */,
+				F1A69AA0BE3B3BF282727542F2EFC934 /* Pods-DIKIDI-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,21 +164,21 @@
 /* Begin PBXNativeTarget section */
 		D99EDCF1E6DCFABCF021F0088586F88D /* Pods-DIKIDI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FBA9AFCD1DDE265F6FCE6F6CCB7B3A35 /* Build configuration list for PBXNativeTarget "Pods-DIKIDI" */;
+			buildConfigurationList = 5DBB0A7D6E5F998831CB4506AA92B7DA /* Build configuration list for PBXNativeTarget "Pods-DIKIDI" */;
 			buildPhases = (
-				4D5D699430A788668E96981C93B8AC6C /* Headers */,
-				1C58C5D8EC5A642713F12787E49DEDD8 /* Sources */,
-				63B9F88B4BBC37A3BBF64135F1108D0B /* Frameworks */,
-				FDE6C10BACD4EBAA18D2738BD98058FE /* Resources */,
+				21B865EC79BE1A311A1A9AC1DB60E450 /* Headers */,
+				BA7FA71FAA2C283B8C3767F984C78454 /* Sources */,
+				4AF245F61F7C5D148C4C06C43275C02B /* Frameworks */,
+				C29DE54325CB69AEB82764ACA9DBF4FC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				641956B22C7135A855AF3A3769A8B065 /* PBXTargetDependency */,
+				7F1C6E7DA843915135288D706DE03F32 /* PBXTargetDependency */,
 			);
 			name = "Pods-DIKIDI";
-			productName = "Pods-DIKIDI";
-			productReference = EEEC52B52BD9B28A28419CBD64F012EA /* Pods_DIKIDI.framework */;
+			productName = Pods_DIKIDI;
+			productReference = EEEC52B52BD9B28A28419CBD64F012EA /* Pods-DIKIDI */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -188,18 +188,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 37B7833C7B1C6A2F1E4C569F445AE8DD /* Products */;
+			productRefGroup = A64BCE24D0A82280FEE00D27B469100C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -210,7 +210,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FDE6C10BACD4EBAA18D2738BD98058FE /* Resources */ = {
+		C29DE54325CB69AEB82764ACA9DBF4FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,22 +220,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1C58C5D8EC5A642713F12787E49DEDD8 /* Sources */ = {
+		BA7FA71FAA2C283B8C3767F984C78454 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD00CE2DD2A77D0240902D7778C1BC0C /* Pods-DIKIDI-dummy.m in Sources */,
+				321E796887825152A9EE56576B7A88D4 /* Pods-DIKIDI-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		641956B22C7135A855AF3A3769A8B065 /* PBXTargetDependency */ = {
+		7F1C6E7DA843915135288D706DE03F32 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 92260C35630646231B828F843AC614CC /* PBXContainerItemProxy */;
+			targetProxy = E2B9B7D71EDD27AE746487E0CBB68A5F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -306,7 +306,7 @@
 			};
 			name = Debug;
 		};
-		88772315287B8141ABEF4E379A88D60A /* Release */ = {
+		87160A01ECE776CD752489453016D884 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D900303D5BCFC092579F8F94C63E1EC7 /* Pods-DIKIDI.release.xcconfig */;
 			buildSettings = {
@@ -412,7 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,7 +423,7 @@
 			};
 			name = Release;
 		};
-		C1231C932B007F7AEB7ED08B6B246692 /* Debug */ = {
+		E88C6B72B030D914035DCDC30EAAC8C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E2DF5A4541AB1A442CB97D9466FB66C /* Pods-DIKIDI.debug.xcconfig */;
 			buildSettings = {
@@ -466,7 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,20 +488,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5DBB0A7D6E5F998831CB4506AA92B7DA /* Build configuration list for PBXNativeTarget "Pods-DIKIDI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E88C6B72B030D914035DCDC30EAAC8C9 /* Debug */,
+				87160A01ECE776CD752489453016D884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */,
 				AD81E62ACCB0B7A923FC8AA288F9921E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FBA9AFCD1DDE265F6FCE6F6CCB7B3A35 /* Build configuration list for PBXNativeTarget "Pods-DIKIDI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C1231C932B007F7AEB7ED08B6B246692 /* Debug */,
-				88772315287B8141ABEF4E379A88D60A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
