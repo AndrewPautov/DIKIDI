@@ -9,14 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @ObservedObject var imageCall: ImageCall
+    @ObservedObject var dikidiDataCall: DikidiDataCall
     @State var image: UIImage = UIImage()
     @State var exapmles: UIImage = UIImage()
     @State var thumb: UIImage = UIImage()
     
     init() {
-        imageCall = ImageCall()
-        imageCall.getImages()
+        dikidiDataCall = DikidiDataCall()
+        dikidiDataCall.getDikidiData()
     }
 
     var body: some View {
@@ -28,7 +28,7 @@ struct HomeView: View {
                        .aspectRatio(contentMode: .fit)
                        .frame(width: 700, height: 340)
                        .offset(y: -50)
-                       .onReceive(imageCall.didChange) { data in
+                       .onReceive(dikidiDataCall.didChangeHeaderImage) { data in
                            image = UIImage(data: data) ?? UIImage()
                        }
                     Text("Онлайн-записи и\n бронирование услуг")
@@ -47,7 +47,7 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 450, height: 228)
                     .offset(y: -55)
-                    .onReceive(imageCall.didChangeExampleImage) { data in
+                    .onReceive(dikidiDataCall.didChangeExampleImage) { data in
                     exapmles = UIImage(data: data) ?? UIImage()
                     }
                 HStack {
@@ -68,11 +68,17 @@ struct HomeView: View {
                 }.offset(y: -65)
             }
             Divider().offset(y: -70)
-
+            
+            // MARK: - Catalog
             Text("Каталог")
                 .fontWeight(.bold)
                 .font(.system(size: 23))
                 .offset(x: -146, y: -65)
+            
+            // for category in catalog {
+            //     category.id
+            // }
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 11)
                     .fill(Color.gray)
@@ -83,8 +89,8 @@ struct HomeView: View {
                 Image(uiImage: thumb)
                     .cornerRadius(11)
                     .offset(x: -130)
-                    .onReceive(imageCall.didChangeCatalogImage) { data in
-                        thumb = UIImage(data: data) ?? UIImage()
+                    .onReceive(dikidiDataCall.didChangeCatalogImages) { catalogImages in
+                        thumb = UIImage(data: catalogImages[category.id]) ?? UIImage()
                     }
                 HStack {
                     RoundedRectangle(cornerRadius: 11)
@@ -110,7 +116,7 @@ struct HomeView: View {
                     }
                 }
             }.offset(y: -65)
-            
+        
             ZStack {
                 RoundedRectangle(cornerRadius: 11)
                     .fill(Color.gray)
@@ -121,7 +127,7 @@ struct HomeView: View {
                 Image(uiImage: thumb)
                     .cornerRadius(11)
                     .offset(x: -130)
-                    .onReceive(imageCall.didChangeCatalogImage1) { data in
+                    .onReceive(dikidiDataCall.didChangeCatalogImage1) { data in
                         thumb = UIImage(data: data) ?? UIImage()
                     }
                 HStack {

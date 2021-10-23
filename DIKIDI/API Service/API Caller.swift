@@ -29,8 +29,7 @@ struct APICall {
                 let jsonData = try JSONSerialization.data(withJSONObject: json, options: [JSONSerialization.WritingOptions.withoutEscapingSlashes])
                 let string = (String(data: jsonData, encoding: String.Encoding.utf8))
                 guard let string = string else {return}
-                let newString = string.filter {$0 != "\\"}
-
+                let newString = string.filter { $0 != "\\"}
             } catch {
                 print(error)
             }
@@ -71,17 +70,18 @@ extension URLSession {
     }
 }
 
-class ImageCall: ObservableObject {
+class DikidiDataCall: ObservableObject {
     
-    var didChange = PassthroughSubject<Data, Never>()
+    var didChangeHeaderImage = PassthroughSubject<Data, Never>()
     var didChangeExampleImage = PassthroughSubject<Data, Never>()
-    var didChangeCatalogImage = PassthroughSubject<Data, Never>()
-    var didChangeCatalogImage1 = PassthroughSubject<Data, Never>()
-    //var didChangedName = PassthroughSubject<Data, Never>()
+    var didChangeCatalog = PassthroughSubject<[Catalog], Never>()
+    var didChangeCatalogImages = PassthroughSubject<[String: Data], Never>()
+
+    // var didChangedName = PassthroughSubject<Data, Never>()
 
     var headerImage = Data() {
         didSet {
-            didChange.send(headerImage)
+            didChangeHeaderImage.send(headerImage)
         }
     }
     
@@ -91,17 +91,23 @@ class ImageCall: ObservableObject {
         }
     }
     
-    var catalogImage = Data() {
+    var catalog: [Catalog] = [] {
         didSet {
-            didChangeCatalogImage.send(catalogImage)
+            didChangeCatalog.send(catalog)
         }
     }
     
-    var catalogImage1 = Data() {
+    var catalogImages: [String: Data] = [:] {
         didSet {
-            didChangeCatalogImage1.send(catalogImage1)
+            didChangeCatalogImages.send(catalogImages)
         }
     }
+    
+//    var catalogImage1 = Data() {
+//        didSet {
+//            didChangeCatalogImage1.send(catalogImage1)
+//        }
+//    }
     
 //    var nameString = Data() {
 //        didSet {
@@ -109,12 +115,11 @@ class ImageCall: ObservableObject {
 //        }
 //    }
 
-    func getImages() {
+    func getDikidiData() {
         imageManager()
         examplesManager()
-        workshopsManager()
-        workshops1Manager()
-        //nameManager()
+        catalogManager()
+        // nameManager()
     }
 
    private func getRequest() -> URLRequest? {
@@ -158,35 +163,41 @@ class ImageCall: ObservableObject {
         }.resume()
     }
     
-    func workshopsManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
+    func catalogManager(_ completionHeandler: (([Catalog]) -> Void)? = nil) {
         guard let request = getRequest() else { return }
         URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
             guard let self = self else { return }
             if let dikidi = dikidi {
                 DispatchQueue.main.async {
-                    if let url = URL(string: dikidi.data.blocks.catalog[0].image.thumb) {
-                        self.catalogImage = try! Data(contentsOf: url)
+                    let catalog = dikidi.data.blocks.catalog
+                    for catalogCategory in catalog {
+                        self.catalog.append(catalogCategory)
                     }
+                    self.catalogImageManager()
+                    guard let completionHeandler = completionHeandler else {return}
+                    completionHeandler(catalog)
                 }
             }
         }.resume()
     }
     
-    func workshops1Manager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
+    func catalogImageManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
         guard let request = getRequest() else { return }
         URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
             guard let self = self else { return }
             if let dikidi = dikidi {
                 DispatchQueue.main.async {
-                    if let url = URL(string: dikidi.data.blocks.catalog[1].image.thumb) {
-                        self.catalogImage1 = try! Data(contentsOf: url)
+                    for catalogDataIndex in 0..<dikidi.data.blocks.catalog.count {
+                        let catalogDataId = dikidi.data.blocks.catalog[catalogDataIndex].id
+                        let catalogDataImageUrl = dikidi.data.blocks.catalog[catalogDataIndex].image.thumb
+                        if let url = URL(string: catalogDataImageUrl) {
+                            self.catalogImages[catalogDataId] = try! Data(contentsOf: url)
+                        }
                     }
                 }
             }
         }.resume()
     }
-    
-    
     
 //    func nameManager(_ completionHeandler: ((Text) -> Void)? = nil) {
 //        guard let request = getRequest() else { return }
