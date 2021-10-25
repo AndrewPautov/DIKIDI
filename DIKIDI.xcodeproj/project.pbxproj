@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E2EEA592711D49500E73533 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2EEA582711D49500E73533 /* API Caller.swift */; };
+		6E2F972327241131008D216F /* DikidiDataCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F972227241131008D216F /* DikidiDataCall.swift */; };
 		6E87957B27159F11007B4000 /* CatagolModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87957A27159F10007B4000 /* CatagolModels.swift */; };
 		6E87957D27159F6D007B4000 /* Dikidi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87957C27159F6D007B4000 /* Dikidi.swift */; };
 		6E87957F27159F83007B4000 /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E87957E27159F83007B4000 /* DataClass.swift */; };
@@ -30,6 +31,7 @@
 		33B7ED6287837AC897CF3B08 /* Pods-DIKIDI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIKIDI.debug.xcconfig"; path = "Target Support Files/Pods-DIKIDI/Pods-DIKIDI.debug.xcconfig"; sourceTree = "<group>"; };
 		39630BB4BE7D5A24AC972182 /* Pods-DIKIDI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIKIDI.release.xcconfig"; path = "Target Support Files/Pods-DIKIDI/Pods-DIKIDI.release.xcconfig"; sourceTree = "<group>"; };
 		6E2EEA582711D49500E73533 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
+		6E2F972227241131008D216F /* DikidiDataCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DikidiDataCall.swift; sourceTree = "<group>"; };
 		6E87957A27159F10007B4000 /* CatagolModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatagolModels.swift; sourceTree = "<group>"; };
 		6E87957C27159F6D007B4000 /* Dikidi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dikidi.swift; sourceTree = "<group>"; };
 		6E87957E27159F83007B4000 /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				6E2EEA582711D49500E73533 /* API Caller.swift */,
+				6E2F972227241131008D216F /* DikidiDataCall.swift */,
 			);
 			path = "API Service";
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				6E2EEA592711D49500E73533 /* API Caller.swift in Sources */,
 				6E87958527159FF9007B4000 /* ImageModel.swift in Sources */,
 				6EFB6AC72711E95E00CDC0A2 /* HomeView.swift in Sources */,
+				6E2F972327241131008D216F /* DikidiDataCall.swift in Sources */,
 				6E87958327159FE0007B4000 /* Currency.swift in Sources */,
 				6E87958B2715A04F007B4000 /* Errors.swift in Sources */,
 				6E87958127159FBF007B4000 /* Blocks.swift in Sources */,

@@ -78,82 +78,45 @@ struct HomeView: View {
             // for category in catalog {
             //     category.id
             // }
-            
-            ZStack {
-                RoundedRectangle(cornerRadius: 11)
-                    .fill(Color.gray)
-                    .frame(width: 380, height: 120)
-                RoundedRectangle(cornerRadius: 11)
-                    .fill(Color.white)
-                    .frame(width: 375, height: 115)
-                Image(uiImage: thumb)
-                    .cornerRadius(11)
-                    .offset(x: -130)
-                    .onReceive(dikidiDataCall.didChangeCatalogImages) { catalogImages in
-                        thumb = UIImage(data: catalogImages[category.id]) ?? UIImage()
-                    }
-                HStack {
+            ForEach(dikidiDataCall.catalogImages) { _ in
+                ZStack{
                     RoundedRectangle(cornerRadius: 11)
-                        .fill(Color.blue)
-                        .frame(width: 120, height: 120)
-                    Spacer()
-                    VStack {
-
-                        Text("Adress")
-                            .offset(x: -204, y: -3)
-                            .font(.system(size: 13))
-                        Text("Schedule")
-                            .offset(x: -198, y: -2)
-                            .font(.system(size: 13))
-                        HStack(spacing: 2) {
-                            Text("0.0")
-                                .font(.system(size: 13))
-                            ForEach(0 ..< 5) { _ in
-                                Image(systemName: "star")
-                                    .font(.system(size: 10))
-                            }
-                        }.offset(x: -180)
-                    }
-                }
-            }.offset(y: -65)
-        
-            ZStack {
-                RoundedRectangle(cornerRadius: 11)
-                    .fill(Color.gray)
-                    .frame(width: 380, height: 120)
-                RoundedRectangle(cornerRadius: 11)
-                    .fill(Color.white)
-                    .frame(width: 375, height: 115)
-                Image(uiImage: thumb)
-                    .cornerRadius(11)
-                    .offset(x: -130)
-                    .onReceive(dikidiDataCall.didChangeCatalogImage1) { data in
-                        thumb = UIImage(data: data) ?? UIImage()
-                    }
-                HStack {
+                        .fill(Color.gray)
+                        .frame(width: 380, height: 120)
                     RoundedRectangle(cornerRadius: 11)
-                        .fill(Color.blue)
-                        .frame(width: 120, height: 120)
-                    Spacer()
-                    VStack {
-
-                        Text("Adress")
-                            .offset(x: -204, y: -3)
-                            .font(.system(size: 13))
-                        Text("Schedule")
-                            .offset(x: -198, y: -2)
-                            .font(.system(size: 13))
-                        HStack(spacing: 2) {
-                            Text("0.0")
+                        .fill(Color.white)
+                        .frame(width: 375, height: 115)
+                    Image(uiImage: thumb)
+                        .cornerRadius(11)
+                        .offset(x: -130)
+                        .onReceive(dikidiDataCall.didChangeCatalogImages) { catalogImages in
+                            thumb = UIImage(data: catalogImages[category.id]) ?? UIImage()
+                        }
+                    HStack {
+                        RoundedRectangle(cornerRadius: 11)
+                            .fill(Color.blue)
+                            .frame(width: 120, height: 120)
+                        Spacer()
+                        VStack {
+                            
+                            Text("Adress")
+                                .offset(x: -204, y: -3)
                                 .font(.system(size: 13))
-                            ForEach(0 ..< 5) { _ in
-                                Image(systemName: "star")
-                                    .font(.system(size: 10))
-                            }
-                        }.offset(x: -180)
+                            Text("Schedule")
+                                .offset(x: -198, y: -2)
+                                .font(.system(size: 13))
+                            HStack(spacing: 2) {
+                                Text("0.0")
+                                    .font(.system(size: 13))
+                                ForEach(0 ..< 5) { _ in
+                                    Image(systemName: "star")
+                                        .font(.system(size: 10))
+                                }
+                            }.offset(x: -180)
+                        }
                     }
-                }
-            }.offset(y: -65)
+                }.offset(y: -65)
+            }
         }.ignoresSafeArea()
     }
 }
