@@ -8,7 +8,8 @@
 import Foundation
 
 class Catalog: Codable {
-    internal init(id: String, schedule: ScheduleUnion, categories: [JSONAny], rating: Double, currency: Currency, street: String, lat: String, image: ImageModel, lng: String, isMaster: Bool, name: String, house: String, masterID: String?) {
+    
+    init(id: String, schedule: ScheduleUnion, categories: [JSONAny], rating: Double, currency: Currency, street: String, lat: String, image: ImageModel, lng: String, isMaster: Bool, name: String, house: String, masterID: String?) {
         self.id = id
         self.schedule = schedule
         self.categories = categories
@@ -41,3 +42,4 @@ class Catalog: Codable {
         case masterID = "master_id"
     }
 }
+

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
+
 class DikidiDataCall: ObservableObject {
     
     var didChangeHeaderImage = PassthroughSubject<Data, Never>()
@@ -30,7 +31,8 @@ class DikidiDataCall: ObservableObject {
         }
     }
     
-    var catalog: [Catalog] = [] {
+    var catalog: [Catalog] = []
+     {
         didSet {
             didChangeCatalog.send(catalog)
         }
@@ -108,36 +110,36 @@ class DikidiDataCall: ObservableObject {
             guard let self = self else { return }
             if let dikidi = dikidi {
                 DispatchQueue.main.async {
-                    let catalog = dikidi.data.blocks.catalog
-                    for catalogCategory in catalog {
+                    let catalogRow = dikidi.data.blocks.catalog
+                    for catalogCategory in catalogRow {
                         self.catalog.append(catalogCategory)
                     }
-                    self.catalogImageManager()
+//                    self.catalogImageManager()
                     guard let completionHeandler = completionHeandler else {return}
-                    completionHeandler(catalog)
+                    completionHeandler(self.catalog)
                 }
             }
         }.resume()
     }
     
-    func catalogImageManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
-        guard let request = getRequest() else { return }
-        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
-            guard let self = self else { return }
-            if let dikidi = dikidi {
-                DispatchQueue.main.async {
-                    for catalogDataIndex in 0..<dikidi.data.blocks.catalog.count {
-                        let catalogDataId = dikidi.data.blocks.catalog[catalogDataIndex].id
-                        let catalogDataImageUrl = dikidi.data.blocks.catalog[catalogDataIndex].image.thumb
-                        if let url = URL(string: catalogDataImageUrl) {
-                            self.catalogImages[catalogDataId] = try! Data(contentsOf: url)
-                        }
-                    }
-                }
-            }
-        }.resume()
-    }
-    
+//    func catalogImageManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
+//        guard let request = getRequest() else { return }
+//        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
+//            guard let self = self else { return }
+//            if let dikidi = dikidi {
+//                DispatchQueue.main.async {
+//                    for catalogDataIndex in 0..<dikidi.data.blocks.catalog.count {
+//                        let catalogDataId = dikidi.data.blocks.catalog[catalogDataIndex].id
+//                        let catalogDataImageUrl = dikidi.data.blocks.catalog[catalogDataIndex].image.thumb
+//                        if let url = URL(string: catalogDataImageUrl) {
+//                            self.catalogImages[catalogDataId] = try! Data(contentsOf: url)
+//                        }
+//                    }
+//                }
+//            }
+//        }.resume()
+//    }
+//
 //    func nameManager(_ completionHeandler: ((Text) -> Void)? = nil) {
 //        guard let request = getRequest() else { return }
 //        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in

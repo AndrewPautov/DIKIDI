@@ -69,4 +69,3 @@ extension URLSession {
         return self.codableTask(with: url, completionHandler: completionHandler)
     }
 }
-

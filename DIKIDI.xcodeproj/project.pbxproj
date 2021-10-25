@@ -25,6 +25,7 @@
 		6ED3440927107DFB00C9BF74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED3440827107DFB00C9BF74 /* Preview Assets.xcassets */; };
 		6EFB6AC72711E95E00CDC0A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFB6AC62711E95E00CDC0A2 /* HomeView.swift */; };
 		965366E2F8DF9D2F736A3E17 /* Pods_DIKIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775192E2A92800DE02885534 /* Pods_DIKIDI.framework */; };
+		9F27CACF2727174300EA9127 /* CatalogCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F27CACE2727174300EA9127 /* CatalogCategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		6ED3440827107DFB00C9BF74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6EFB6AC62711E95E00CDC0A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		775192E2A92800DE02885534 /* Pods_DIKIDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DIKIDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F27CACE2727174300EA9127 /* CatalogCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCategoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				6EFB6AC62711E95E00CDC0A2 /* HomeView.swift */,
+				9F27CACE2727174300EA9127 /* CatalogCategoryCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				6E87958327159FE0007B4000 /* Currency.swift in Sources */,
 				6E87958B2715A04F007B4000 /* Errors.swift in Sources */,
 				6E87958127159FBF007B4000 /* Blocks.swift in Sources */,
+				9F27CACF2727174300EA9127 /* CatalogCategoryCell.swift in Sources */,
 				6ED3440427107DF600C9BF74 /* ContentView.swift in Sources */,
 				6ED3440227107DF600C9BF74 /* DIKIDIApp.swift in Sources */,
 			);
