@@ -13,7 +13,7 @@ struct HomeView: View {
     @State var image: UIImage = UIImage()
     @State var exapmles: UIImage = UIImage()
     @State var thumb: UIImage = UIImage()
-    
+
     init() {
         dikidiDataCall = DikidiDataCall()
         dikidiDataCall.getDikidiData()
@@ -77,37 +77,31 @@ struct HomeView: View {
                     }.padding().offset(x: 35)
 
                 }.offset(y: -65)
+                
+                Divider().offset(y: -70)
+                
+                HStack {
+                    Text("Каталог")
+                        .fontWeight(.bold)
+                        .font(.system(size: 23))
+                        .offset(x: -134, y: -65)
+                    
+                    Text("\(dikidiDataCall.catalog.count)")
+                        .fontWeight(.bold)
+                        .font(.system(size: 23))
+                        .offset(x: -134, y: -65)
+                        .foregroundColor(.gray)
+               
+                List(dikidiDataCall.catalog, id: \.id) { category in
+                    CatalogCategoryCell(category: category, dikidiDataCall: dikidiDataCall)
+                }.onReceive(dikidiDataCall.didChangeCatalog) { category in
+                    CatalogCategoryCell(category: category[0], dikidiDataCall: dikidiDataCall)
+                    }
+                }
             }
-            Divider().offset(y: -70)
             
             // MARK: - Catalog
-            HStack {
-                Text("Каталог")
-                    .fontWeight(.bold)
-                    .font(.system(size: 23))
-                    .offset(x: -134, y: -65)
-                
-                Text("\(dikidiDataCall.catalog.count)")
-                    .fontWeight(.bold)
-                    .font(.system(size: 23))
-                    .offset(x: -134, y: -65)
-                    .foregroundColor(.gray)
-            }
             
-            List(dikidiDataCall.catalog, id: \.id) { category in
-                CatalogCategoryCell(category: category)
-                Text("\(dikidiDataCall.catalog.count)")
-                    .fontWeight(.bold)
-                    .font(.system(size: 23))
-                    .offset(x: -146, y: -65)
-            }.onReceive(dikidiDataCall.didChangeCatalog) { category in
-                CatalogCategoryCell(category: category[0])
-                Text("\(dikidiDataCall.catalog.count)")
-                    .fontWeight(.bold)
-                    .font(.system(size: 23))
-                    .offset(x: -146, y: -65)
-            }
-
 //            ForEach(dikidiDataCall.catalog) { _ in
 //                ZStack{
 //                    RoundedRectangle(cornerRadius: 11)

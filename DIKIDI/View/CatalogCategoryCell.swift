@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CatalogCategoryCell: View {
-    
+        
     var category: Catalog
+    @ObservedObject var dikidiDataCall: DikidiDataCall
+    @State var thumb: UIImage = UIImage()
     
     var body: some View {
         ZStack {
@@ -19,12 +21,12 @@ struct CatalogCategoryCell: View {
             RoundedRectangle(cornerRadius: 11)
                 .fill(Color.white)
                 .frame(width: 375, height: 115)
-//            Image(uiImage: category.image.thumb)
-//                .cornerRadius(11)
-//                .offset(x: -130)
-//                .onReceive() { data in
-//                exapmles = UIImage(data: data) ?? UIImage()
-//                }
+            Image(uiImage: thumb)
+                .cornerRadius(11)
+                .offset(x: -130)
+                .onReceive(dikidiDataCall.didChangeCatalogImages) { data in
+                    thumb = UIImage(data: data[category.id]!) ?? UIImage()
+                }
                 
             HStack {
                 RoundedRectangle(cornerRadius: 11)
@@ -33,7 +35,7 @@ struct CatalogCategoryCell: View {
                 Spacer()
                 VStack {
 
-                    Text("Adress")
+                    Text(category.name)
                         .offset(x: -204, y: -3)
                         .font(.system(size: 13))
                     Text("Schedule")

@@ -28,8 +28,7 @@ class DikidiDataCall: ObservableObject {
         }
     }
     
-    var catalog: [Catalog] = []
-    {
+    var catalog: [Catalog] = [] {
         didSet {
             didChangeCatalog.send(catalog)
         }
@@ -40,7 +39,6 @@ class DikidiDataCall: ObservableObject {
             didChangeCatalogImages.send(catalogImages)
         }
     }
-    
 
     func getDikidiData() {
         imageManager()
@@ -113,11 +111,11 @@ class DikidiDataCall: ObservableObject {
             guard let self = self else { return }
             if let dikidi = dikidi {
                 DispatchQueue.main.async {
-                    for catalogDataIndex in 7..<dikidi.data.blocks.catalog.count {
+                    for catalogDataIndex in 0..<dikidi.data.blocks.catalog.count {
                         let catalogDataId = dikidi.data.blocks.catalog[catalogDataIndex].id
                         let catalogDataImageUrl = dikidi.data.blocks.catalog[catalogDataIndex].image.thumb
                         if let url = URL(string: catalogDataImageUrl) {
-                            self.catalogImages[catalogDataId] = try! Data(contentsOf: url)
+                            self.catalogImages[catalogDataId] = try? Data(contentsOf: url)
                         }
                     }
                 }
