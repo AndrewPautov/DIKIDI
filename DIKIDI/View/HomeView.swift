@@ -23,6 +23,7 @@ struct HomeView: View {
         ScrollView {
             VStack {
                 ZStack {
+                    
                     Image(uiImage: image)
                        .resizable()
                        .aspectRatio(contentMode: .fit)
@@ -31,11 +32,21 @@ struct HomeView: View {
                        .onReceive(dikidiDataCall.didChangeHeaderImage) { data in
                            image = UIImage(data: data) ?? UIImage()
                        }
+
                     Text("Онлайн-записи и\n бронирование услуг")
                         .multilineTextAlignment(.center)
                         .font(.system(size: 22, weight: .medium, design: .default))
                         .foregroundColor(.white)
                         .offset(x: 0, y: 20)
+                    Button() {
+                        print("The button was tapped")
+                    } label: {
+                        Image(systemName: "paperplane.circle")
+                    }
+                    .font(.system(size: 25))
+                    .offset(x: 180, y: -120)
+                    .foregroundColor(.white)
+                    
                 }.edgesIgnoringSafeArea(.top)
 
                 Text("Коллекция работ")
@@ -70,15 +81,18 @@ struct HomeView: View {
             Divider().offset(y: -70)
             
             // MARK: - Catalog
-            Text("Каталог")
-                .fontWeight(.bold)
-                .font(.system(size: 23))
-                .offset(x: -146, y: -65)
-            
-            Text("\(dikidiDataCall.catalog.count)")
-                .fontWeight(.bold)
-                .font(.system(size: 23))
-                .offset(x: -146, y: -65)
+            HStack {
+                Text("Каталог")
+                    .fontWeight(.bold)
+                    .font(.system(size: 23))
+                    .offset(x: -134, y: -65)
+                
+                Text("\(dikidiDataCall.catalog.count)")
+                    .fontWeight(.bold)
+                    .font(.system(size: 23))
+                    .offset(x: -134, y: -65)
+                    .foregroundColor(.gray)
+            }
             
             List(dikidiDataCall.catalog, id: \.id) { category in
                 CatalogCategoryCell(category: category)
@@ -94,7 +108,7 @@ struct HomeView: View {
                     .offset(x: -146, y: -65)
             }
 
-//            ForEach(dikidiDataCall.catalog, ) { _ in
+//            ForEach(dikidiDataCall.catalog) { _ in
 //                ZStack{
 //                    RoundedRectangle(cornerRadius: 11)
 //                        .fill(Color.gray)

@@ -9,16 +9,13 @@ import Foundation
 import SwiftUI
 import Combine
 
-
 class DikidiDataCall: ObservableObject {
     
     var didChangeHeaderImage = PassthroughSubject<Data, Never>()
     var didChangeExampleImage = PassthroughSubject<Data, Never>()
     var didChangeCatalog = PassthroughSubject<[Catalog], Never>()
     var didChangeCatalogImages = PassthroughSubject<[String: Data], Never>()
-
-    // var didChangedName = PassthroughSubject<Data, Never>()
-
+    
     var headerImage = Data() {
         didSet {
             didChangeHeaderImage.send(headerImage)
@@ -32,7 +29,7 @@ class DikidiDataCall: ObservableObject {
     }
     
     var catalog: [Catalog] = []
-     {
+    {
         didSet {
             didChangeCatalog.send(catalog)
         }
@@ -44,23 +41,11 @@ class DikidiDataCall: ObservableObject {
         }
     }
     
-//    var catalogImage1 = Data() {
-//        didSet {
-//            didChangeCatalogImage1.send(catalogImage1)
-//        }
-//    }
-    
-//    var nameString = Data() {
-//        didSet {
-//            didChangedName.send(nameString)
-//        }
-//    }
 
     func getDikidiData() {
         imageManager()
         examplesManager()
         catalogManager()
-        // nameManager()
     }
 
    private func getRequest() -> URLRequest? {
@@ -114,7 +99,7 @@ class DikidiDataCall: ObservableObject {
                     for catalogCategory in catalogRow {
                         self.catalog.append(catalogCategory)
                     }
-//                    self.catalogImageManager()
+                    self.catalogImageManager()
                     guard let completionHeandler = completionHeandler else {return}
                     completionHeandler(self.catalog)
                 }
@@ -122,35 +107,21 @@ class DikidiDataCall: ObservableObject {
         }.resume()
     }
     
-//    func catalogImageManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
-//        guard let request = getRequest() else { return }
-//        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
-//            guard let self = self else { return }
-//            if let dikidi = dikidi {
-//                DispatchQueue.main.async {
-//                    for catalogDataIndex in 0..<dikidi.data.blocks.catalog.count {
-//                        let catalogDataId = dikidi.data.blocks.catalog[catalogDataIndex].id
-//                        let catalogDataImageUrl = dikidi.data.blocks.catalog[catalogDataIndex].image.thumb
-//                        if let url = URL(string: catalogDataImageUrl) {
-//                            self.catalogImages[catalogDataId] = try! Data(contentsOf: url)
-//                        }
-//                    }
-//                }
-//            }
-//        }.resume()
-//    }
-//
-//    func nameManager(_ completionHeandler: ((Text) -> Void)? = nil) {
-//        guard let request = getRequest() else { return }
-//        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
-//            guard let self = self else { return }
-//            if let dikidi = dikidi {
-//                DispatchQueue.main.async {
-//                    if let url = URL(string: dikidi.data.blocks.catalog[0].name) {
-//                        self.catalogImage = try! Data(contentsOf: url)
-//                    }
-//                }
-//            }
-//        }.resume()
-//    }
+    func catalogImageManager(_ completionHeandler: ((ImageModel) -> Void)? = nil) {
+        guard let request = getRequest() else { return }
+        URLSession.shared.dikidiTask(with: request) { [weak self] dikidi, _, _ in
+            guard let self = self else { return }
+            if let dikidi = dikidi {
+                DispatchQueue.main.async {
+                    for catalogDataIndex in 7..<dikidi.data.blocks.catalog.count {
+                        let catalogDataId = dikidi.data.blocks.catalog[catalogDataIndex].id
+                        let catalogDataImageUrl = dikidi.data.blocks.catalog[catalogDataIndex].image.thumb
+                        if let url = URL(string: catalogDataImageUrl) {
+                            self.catalogImages[catalogDataId] = try! Data(contentsOf: url)
+                        }
+                    }
+                }
+            }
+        }.resume()
+    }
 }
