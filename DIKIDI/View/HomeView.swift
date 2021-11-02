@@ -23,7 +23,6 @@ struct HomeView: View {
         ScrollView {
             VStack {
                 ZStack {
-                    
                     Image(uiImage: image)
                        .resizable()
                        .aspectRatio(contentMode: .fit)
@@ -91,56 +90,14 @@ struct HomeView: View {
                         .font(.system(size: 23))
                         .offset(x: -134, y: -65)
                         .foregroundColor(.gray)
-               
-                List(dikidiDataCall.catalog, id: \.id) { category in
-                    CatalogCategoryCell(category: category, dikidiDataCall: dikidiDataCall)
-                }.onReceive(dikidiDataCall.didChangeCatalog) { category in
-                    CatalogCategoryCell(category: category[0], dikidiDataCall: dikidiDataCall)
+                    
+                    List(dikidiDataCall.catalog, id: \.id) { category in
+                        CatalogCategoryCell(category: category, dikidiDataCall: dikidiDataCall)
+                    }.onReceive(dikidiDataCall.didChangeCatalog) { category in
+                        CatalogCategoryCell(category: category[0], dikidiDataCall: dikidiDataCall)
                     }
                 }
             }
-            
-            // MARK: - Catalog
-            
-//            ForEach(dikidiDataCall.catalog) { _ in
-//                ZStack{
-//                    RoundedRectangle(cornerRadius: 11)
-//                        .fill(Color.gray)
-//                        .frame(width: 380, height: 120)
-//                    RoundedRectangle(cornerRadius: 11)
-//                        .fill(Color.white)
-//                        .frame(width: 375, height: 115)
-//                    Image(uiImage: thumb)
-//                        .cornerRadius(11)
-//                        .offset(x: -130)
-//                        .onReceive(dikidiDataCall.didChangeCatalogImages) { catalogImages in
-//                            thumb = UIImage(data: catalogImages["1714"]!) ?? UIImage()
-//                        }
-//                    HStack {
-//                        RoundedRectangle(cornerRadius: 11)
-//                            .fill(Color.blue)
-//                            .frame(width: 120, height: 120)
-//                        Spacer()
-//                        VStack {
-//
-//                            Text("Adress")
-//                                .offset(x: -204, y: -3)
-//                                .font(.system(size: 13))
-//                            Text("Schedule")
-//                                .offset(x: -198, y: -2)
-//                                .font(.system(size: 13))
-//                            HStack(spacing: 2) {
-//                                Text("0.0")
-//                                    .font(.system(size: 13))
-//                                ForEach(0 ..< 5) { _ in
-//                                    Image(systemName: "star")
-//                                        .font(.system(size: 10))
-//                                }
-//                            }.offset(x: -180)
-//                        }
-//                    }
-//                }.offset(y: -65)
-//            }
         }.ignoresSafeArea()
     }
 }
